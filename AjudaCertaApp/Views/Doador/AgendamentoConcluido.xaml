@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AjudaCertaApp.Views.Doador.AgendamentoConcluido"
+             Title="AgendamentoConcluido"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid
+        Padding="30,40,30,30"
+        BackgroundColor="#F5A24A">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Image
+            Grid.Row="0"
+            Source="logo_minimalista.svg"
+            WidthRequest="300"/>
+
+        <Label
+            Grid.Row="1"
+            Text="Seu agendamento foi feito com sucesso!"
+            FontSize="30"
+            WidthRequest="300"
+            HorizontalTextAlignment="Center"
+            TextColor="White"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            />
+
+        <Label
+            Grid.Row="2"
+            Text="Sua doação estará na aba de pendentes em seu perfil!"
+            VerticalOptions="Center"
+            TextColor="White"
+            WidthRequest="300"
+            HorizontalTextAlignment="Center"
+            FontSize="30"
+            HorizontalOptions="Center"/>
+
+        <HorizontalStackLayout
+            Grid.Row="3"
+            Spacing="10"
+            HorizontalOptions="Center">
+            <Grid>
+                <Button
+                    Command="{Binding VoltarInicioCommand}"
+                    CornerRadius="20"
+                    HeightRequest="50"
+                    WidthRequest="150"
+                    BackgroundColor="#D5432A"/>
+                <Label
+                    Text="Inicial"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    FontSize="Medium"/>
+            </Grid>
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>

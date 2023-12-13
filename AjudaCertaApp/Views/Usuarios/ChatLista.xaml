@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             x:Class="AjudaCertaApp.Views.Usuarios.ChatLista"
+             Title="ChatLista"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid
+        BackgroundColor="#F4DFC9"
+        Padding="20,20,20,0">
+        <StackLayout>
+            <Grid
+                HeightRequest="90">
+                <sf:SfTextInputLayout
+                    IsVisible="true"
+                    MinimumHeightRequest="80"
+                    MaximumHeightRequest="60"
+                    ContainerBackground="White"
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    InputViewPadding="20,3,20,0"
+                    ShowHelperText="False"
+                    >
+                    <Editor
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start"
+                        />
+                </sf:SfTextInputLayout>
+            </Grid>
+
+            <syncfusion:SfListView
+                 x:Name="ListView"
+                 ItemsSource="logo_minimalista.svg"
+                 ItemSpacing="5,0,0,0"
+                 ItemSize="90">
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Grid>
+                            <HorizontalStackLayout
+                                Spacing="20">
+                                <Image
+                                    Source="fotoperfil.svg"/>
+
+                                <Grid>
+                                    <Label
+                                        Text="Fulano"
+                                        FontSize="Medium"
+                                        FontAttributes="Bold"
+                                        VerticalOptions="Center"/>
+                                </Grid>
+                                
+                            </HorizontalStackLayout>
+                        </Grid>
+
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+        </StackLayout>
+    </Grid>
+    
+</ContentPage>

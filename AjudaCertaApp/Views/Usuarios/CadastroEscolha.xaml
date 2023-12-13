@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AjudaCertaApp.Views.CadastroEscolha"
+             Title="CadastroEscolha"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid
+        BackgroundColor="#F4DFC9">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <ImageButton
+            Grid.Column="0"
+            Source="setavoltar.svg"
+            HeightRequest="25"
+            Margin="4,0,0,0"
+            HorizontalOptions="Start"
+            Command="{Binding VoltarCommand}"
+        />
+        
+        <Image 
+            Grid.Row="1"
+            Source="logo_minimalista.svg"
+            BackgroundColor="#F4DFC9"
+            HeightRequest="125"/>
+
+        <BoxView 
+            Color="#F5A24A"
+            Grid.Row="2"
+            BackgroundColor="#F4DFC9"
+            CornerRadius="88,88,0,0"
+            />
+
+        <Grid
+            Grid.Row="2"
+            Padding="40,70,40,20">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+
+            <Label
+                Grid.Row="0"
+                Text="Qual vai ser a sua Ajuda Certa?"
+                FontFamily="Inter"
+	            HorizontalTextAlignment="Center"
+                WidthRequest="400"
+                VerticalTextAlignment="Center"
+	            FontSize="40"
+	            TextColor="#FFFFFF"
+                />
+
+            <Grid
+                Grid.Row="1"
+                Padding="0,50,0,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <BoxView
+                    Grid.ColumnSpan="2"
+                    CornerRadius="20"
+                    Color="#F5E4D3"
+                    Background="#F5A24A">
+                    <BoxView.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DirecionarCadastroDoador1Command}"/>
+                    </BoxView.GestureRecognizers>
+                </BoxView>
+
+                <Grid
+                    Grid.Column="0"
+                    Padding="10">
+                    <Image
+                        Grid.Column="0"
+                        Source="icondoador.svg"
+                        />    
+                </Grid>
+
+                <Grid
+                    Grid.Column="1"
+                    Padding="0,10,10,10">
+                    <Label
+                    Grid.Column="1"
+                    Text="Doador"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+	                FontSize="28"
+	                TextColor="#000000"
+                    />
+                </Grid>
+
+            </Grid>
+
+            <Grid
+                Grid.Row="2"
+                Padding="0,20,0,50">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <BoxView
+                    Grid.ColumnSpan="2"
+                    CornerRadius="20"
+                    Color="#F5E4D3"
+                    Background="#F5A24A">
+                    <BoxView.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DirecionarCadastroBeneficiario1Command}"/>
+                    </BoxView.GestureRecognizers>
+                </BoxView>
+
+                <Grid
+                    Grid.Column="0"
+                    Padding="10">
+                    <Image
+                        Grid.Column="0"
+                        Source="iconbeneficiario.svg"
+                        />
+                </Grid>
+
+
+                <Grid
+                    Grid.Column="1"
+                    Padding="0,10,10,10">
+                    <Label
+                        Grid.Column="1"
+                        Text="Beneficiário"
+                        FontFamily="Inter"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        FontSize="28"
+                        TextColor="#000000"
+                        />
+                </Grid>
+                
+
+            </Grid>
+
+        </Grid>
+        
+    </Grid>
+</ContentPage>

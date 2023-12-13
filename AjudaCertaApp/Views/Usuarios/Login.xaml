@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             x:Class="AjudaCertaApp.Views.Login"
+             Title="Login"
+             NavigationPage.HasNavigationBar="False">
+    <Grid
+        BackgroundColor="#F4DFC9">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="300"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Image 
+            Grid.Row="0"
+            Source="logo_minimalista.svg"
+            BackgroundColor="#F4DFC9"
+            HeightRequest="125"/>
+
+        <BoxView 
+            Color="#F5A24A"
+            Grid.Row="1"
+            BackgroundColor="#F4DFC9"
+            CornerRadius="88,88,0,0"
+            />
+
+        <Grid 
+            Grid.Row="1"
+            Padding="40,70,40,20"
+            RowSpacing="5">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid
+                Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+              
+
+                <Label
+                    Text="Login:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+                    Padding="5,0"
+	                TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout 
+                    Grid.Row="1" 
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    ContainerBackground="White"
+                    InputViewPadding="20,5,0,5"
+                    Stroke="#F5A24A"
+                    >
+                    <Entry
+                        VerticalOptions="Center"
+                        Text="{Binding Email}"/>
+                </sf:SfTextInputLayout>
+            </Grid>
+
+            <Grid
+                Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label
+                    Text="Senha:"
+                    Padding="5,0"
+                    FontFamily="Inter"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+                    FontSize="14"
+                    TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout
+                    Grid.Row="1"
+                    ContainerType="Outlined"
+                    InputViewPadding="20,5,0,5"
+                    EnablePasswordVisibilityToggle="True"
+                    OutlineCornerRadius="30"
+                    ContainerBackground="White"
+                    Stroke="#F5A24A">
+                    <Entry
+                        VerticalOptions="Center"
+                        Text="{Binding Senha}"/>
+                </sf:SfTextInputLayout>
+            </Grid>
+
+            <HorizontalStackLayout
+                Grid.Row="2"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+                <Label
+                    FontFamily="Inter"
+                    FontSize="14"
+                    TextColor="#FFFFFF"
+                    Text="Não possui cadastro? "/>
+                <Label 
+                    FontFamily="Inter"
+                    FontSize="14"
+                    TextColor="#FFFFFF"
+                    Text="Cadastre-se aqui"
+                    TextDecorations="Underline"
+                    FontAttributes="Bold">
+                    <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding DirecionarCadastroCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </HorizontalStackLayout>
+
+            <Button
+                IsEnabled="{Binding BtnEntrar}"
+                Grid.Row="3"
+                Text="ENTRAR"
+                FontSize="24"
+                BackgroundColor="#DF6234"
+                CornerRadius="20"
+                WidthRequest="200"
+                HeightRequest="65"       
+                Command="{Binding AutenticarPessoaCommand}"
+                />
+
+        </Grid>
+    </Grid>
+    
+</ContentPage>

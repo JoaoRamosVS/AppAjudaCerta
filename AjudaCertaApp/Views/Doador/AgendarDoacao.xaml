@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             xmlns:picker="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
+             x:Class="AjudaCertaApp.Views.Doador.AgendarDoacao"
+             Title="AgendarDoacao"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid
+        BackgroundColor="#F4DFC9">
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".07*"/>
+            <RowDefinition Height=".9*"/>
+        </Grid.RowDefinitions>
+
+        <Grid
+            Grid.Row="1"
+            Padding="20,0,20,20"
+            RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="500"/>
+                <RowDefinition Height="0"/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+
+            <Label
+                Grid.Row="0"
+                FontFamily="Inter"
+	            FontAttributes="Bold"
+	            HorizontalTextAlignment="Center"
+	            FontSize="20"
+	            TextColor="#D5432A"
+	            Text="Local:"/>
+
+            <Grid 
+                Grid.Row="1"
+                VerticalOptions="Start">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    FontFamily="Inter"
+	                FontAttributes="Bold"
+	                HorizontalTextAlignment="Center"
+	                FontSize="20"
+                    VerticalOptions="End"
+	                TextColor="#000000"
+	                Text="Ong Estrela Dalva"/>
+
+
+                <Label
+                    Grid.Row="1"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Center"
+	                FontSize="14"
+	                TextColor="#000000"
+	                Text="Endereço: Av. Josino Vieira de Goes, 1089"
+                 />
+            </Grid>
+
+            <Grid
+                Grid.Row="2">
+                <StackLayout
+                    Spacing="-100"
+                    VerticalOptions="Center">
+                <Label
+                Grid.Row="0"
+                FontFamily="Inter"
+	            FontAttributes="Bold"
+	            HorizontalTextAlignment="Center"
+	            FontSize="Medium"
+                WidthRequest="300"
+	            TextColor="#000000"
+	            Text="Agende um dia e horário para realizar essa doação"
+             />
+
+                <Grid>
+                        <picker:SfDateTimePicker x:Name="Picker"
+                                         HeightRequest="300"
+                                         DateFormat="dd_MM"
+                                         TimeFormat="H_mm"
+                                         MinimumDate="2000/11/28 16:00:00"
+                                         Mode="Dialog"
+                                         ColumnDividerColor="Transparent"
+                                         CancelButtonClicked="Picker_CancelButtonClicked"
+                                         OkButtonClicked="Picker_OkButtonClicked">
+
+                            <picker:SfDateTimePicker.SelectionView >
+                            <picker:PickerSelectionView CornerRadius="10"
+                                                    Stroke="#F5A24A" 
+                                                    Padding="10, 5, 10, 5" 
+                                                    Background="#F5A24A"
+                                                    />
+                        </picker:SfDateTimePicker.SelectionView>
+
+
+                        <picker:SfDateTimePicker.HeaderView>
+                                <picker:DateTimePickerHeaderView DividerColor="#F5A24A"
+                                                             Background="#D3D3D3"
+                                                             TimeFormat="HH:mm"
+                                                                 
+                                                         >
+
+                                <picker:DateTimePickerHeaderView.TextStyle>
+                                    <picker:PickerTextStyle FontSize="15"
+                                                            
+                                                        />
+
+                                </picker:DateTimePickerHeaderView.TextStyle>
+                            </picker:DateTimePickerHeaderView>
+                        </picker:SfDateTimePicker.HeaderView>
+
+
+
+
+                        <picker:SfDateTimePicker.ColumnHeaderView>
+                            <picker:DateTimePickerColumnHeaderView>
+
+
+                            </picker:DateTimePickerColumnHeaderView>
+
+                        </picker:SfDateTimePicker.ColumnHeaderView>
+
+
+
+                        <picker:SfDateTimePicker.FooterView>
+                            <picker:PickerFooterView ShowOkButton="True" 
+                                                 Height="40"
+                                                 >
+                                <picker:PickerFooterView.TextStyle >
+                                    <picker:PickerTextStyle FontSize="15" TextColor="Black" />
+                                </picker:PickerFooterView.TextStyle>
+                            </picker:PickerFooterView>
+
+
+
+
+                        </picker:SfDateTimePicker.FooterView>
+
+                    </picker:SfDateTimePicker>
+
+                    <Button
+                        Text="Agendar" 
+                        x:Name="pickerButton"
+                        FontSize="Medium"
+                        Clicked="pickerButton_Clicked"  
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        HeightRequest="50"   
+                        WidthRequest="150"
+                        />
+                </Grid>
+                </StackLayout>
+            </Grid>
+
+
+
+            <Button
+                    Margin="0,50"
+                    Grid.Row="3"
+                    Text="Concluir"
+                    FontSize="24"
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"
+                    BackgroundColor="#DF6234"
+                    CornerRadius="20"
+                    WidthRequest="200"
+                    HeightRequest="50"
+                    Command="{Binding DoarItensCommand}"
+                    />
+
+        </Grid>
+        
+    </Grid>
+</ContentPage>

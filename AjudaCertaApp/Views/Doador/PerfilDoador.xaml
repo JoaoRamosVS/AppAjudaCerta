@@ -1,0 +1,772 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             xmlns:conv="clr-namespace:AjudaCertaApp.Converters"
+             xmlns:avatarview="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             x:Class="AjudaCertaApp.Views.Doador.PerfilDoador"
+             NavigationPage.HasNavigationBar="False"
+             Title="Perfil">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:ByteArrayToImageSourceConverter x:Key="ByteArrayToImage" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView
+        BackgroundColor="#F4DFC9"
+        Padding="15,20,15,50"
+        VerticalScrollBarVisibility="Never">
+        <StackLayout
+            Padding="0"
+            Spacing="20">
+            <Grid>
+                <HorizontalStackLayout
+                    Spacing="20">
+                    <Grid>
+                        <avatarview:SfAvatarView 
+                           ContentType="Custom"
+                           ImageSource="{Binding Foto,Converter={StaticResource ByteArrayToImage}}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"   
+                           HeightRequest="100"
+                           WidthRequest="100"
+                           CornerRadius="50" />
+
+                        <Grid
+                            HorizontalOptions="End"
+                            VerticalOptions="End"
+                            HeightRequest="30"
+                            WidthRequest="30">
+                            <Button
+                            CornerRadius="50"
+                            HeightRequest="30"
+                            WidthRequest="30"
+                            VerticalOptions="End"
+                            HorizontalOptions="End"
+                            BackgroundColor="#F5A24A"
+                            Command="{Binding AlterarFotoCommand}"
+                            />
+
+                            <Image
+                                Source="lapisperfil.svg"
+                                WidthRequest="20"/>
+                        </Grid>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Label
+                            Grid.Row="0"
+                            FontSize="Medium"
+                            Text="Boa tarde,"
+                            VerticalOptions="End"/>
+
+                        <Label
+                            Grid.Row="1"
+                            Text="{Binding Username}"
+                            FontSize="Medium"
+                            FontAttributes="Bold"/>
+
+                    </Grid>
+                </HorizontalStackLayout>
+            </Grid>
+
+            <Grid>
+                <Label
+                    Text="{Binding DescricaoMarion}"/>
+            </Grid>
+
+            <HorizontalStackLayout
+                Spacing="2">
+                <Label
+                    Text="Endereço: "
+                    FontAttributes="Bold"
+                    FontSize="15"/>
+
+                <Label
+                    Text="{Binding RuaEtec}"
+                    FontSize="15"/>
+            </HorizontalStackLayout>
+
+            <Grid
+                HorizontalOptions="Center">
+                <HorizontalStackLayout
+                        Spacing="5">
+                    <Grid>
+                        <Button
+                                HeightRequest="30"
+                                WidthRequest="100"/>
+                        <Label
+                                Text="Concluídas"
+                                FontAttributes="Bold"
+                                TextColor="White"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                />
+                    </Grid>
+
+                    <Grid>
+                        <Button
+                                HeightRequest="30"
+                                WidthRequest="100"/>
+                        <Label
+                                Text="Pendentes"
+                                FontAttributes="Bold"
+                                TextColor="White"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                />
+                    </Grid>
+
+                    <Grid>
+                        <Button
+                                HeightRequest="30"
+                                WidthRequest="100"/>
+                        <Label
+                                Text="Canceladas"
+                                FontAttributes="Bold"
+                                TextColor="White"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                />
+                    </Grid>
+
+
+                </HorizontalStackLayout>
+            </Grid>
+
+
+            <!--DOAÇÕES CONCLUÍDAS-->
+            <Label
+            FontFamily="Inter"
+            FontAttributes="Bold"
+            HorizontalTextAlignment="Center"
+            FontSize="25"
+            HeightRequest="30"
+            TextColor="#000000"
+            Text="Minhas doações concluídas"/>
+            <Grid>
+
+
+
+                <syncfusion:SfListView
+ x:Name="ListView"
+ ItemsSource="{Binding ListaDoacaos}"
+ ItemSpacing="5,0,0,0"
+ ItemSize="500"
+ ScrollBarVisibility="Never">
+                    <syncfusion:SfListView.ItemTemplate>
+                        <DataTemplate>
+
+                            <Grid
+                Padding="40,10,40,0"
+                    ColumnSpacing="10">
+
+                                <BoxView
+                    Color="#F5AF66"
+                    BackgroundColor="Transparent"
+                    CornerRadius="20"
+                    />
+
+                                <BoxView
+                        Grid.Column="1"
+                    Color="#F5AF66"
+                    BackgroundColor="Transparent"
+                    CornerRadius="20"
+                    />
+
+                                <Grid>
+                                    <StackLayout
+                        Grid.Column="0"
+                        Spacing="-13">
+
+                                        <!--CABEÇALHO-->
+                                        <Grid
+                            Padding="7,10"
+                            RowSpacing="-3">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+
+                                            <Label
+                                Grid.Row="0"
+                                FontAttributes="Bold"
+                                Text="Doação:"
+                                FontSize="14"
+                                TextColor="#CB6554"
+                                />
+                                            <Label
+                                Grid.Row="1"
+                                Text="{Binding ItemDoacaoNome}"
+                                FontSize="13"
+                                TextColor="White"
+                                />
+                                        </Grid>
+
+                                        <Grid
+                            Padding="7,10"
+                            RowSpacing="-3">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+
+                                            <Label
+                                Grid.Row="0"
+                                FontAttributes="Bold"
+                                Text="Data realização:"
+                                FontSize="14"
+                                TextColor="#CB6554"
+                                />
+                                            <Label
+                                Grid.Row="1"
+                                Text="{Binding DataDoacao}"
+                                FontSize="13"
+                                TextColor="White"
+                                />
+                                        </Grid>
+
+                                        <Grid
+                            Padding="7,10"
+                            RowSpacing="-3">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+
+                                            <Label
+                                Grid.Row="0"
+                                Text="Data entrega:"
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                TextColor="#CB6554"
+                                />
+                                            <Label
+                                Grid.Row="1"
+                                Text="{Binding DataAgenda}"
+                                FontSize="13"
+                                TextColor="White"
+                                />
+                                        </Grid>
+                                        <!--#endregion-->
+
+
+
+
+
+                                        <Grid
+                                Padding="0,5">
+                                            <ScrollView
+                                    HeightRequest="290"
+                                    >
+                                                <StackLayout
+                                    Spacing="-13"
+                                    >
+
+                                                    <!--VALOR-->
+                                                    <Grid
+                            x:Name="lblValor"
+                            IsVisible="{Binding dinheiro}"
+                            Padding="7,10"
+                            RowSpacing="-3">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <Label
+                                Grid.Row="0"
+                                FontAttributes="Bold"
+                                Text="Valor:"
+                                FontSize="14"
+                                TextColor="#CB6554"
+                                />
+                                                        <Label
+                                Grid.Row="1"
+                                Text="R$ 1000"
+                                FontSize="13"
+                                TextColor="White"
+                                />
+                                                    </Grid>
+
+                                                    <!--FORMA DE PAGAMENTO-->
+                                                    <Grid
+                            x:Name="lblFormaPagamento"
+                            IsVisible="false"
+                            Padding="7,10"
+                            RowSpacing="-3">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <Label
+                                Grid.Row="0"
+                                Text="Forma de pagamento:"
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                TextColor="#CB6554"
+                                />
+                                                        <Label
+                                Grid.Row="1"
+                                Text="PIX"
+                                FontSize="13"
+                                TextColor="White"
+                                />
+                                                    </Grid>
+
+                                                    <!--NOME-->
+                                                    <Grid
+                            x:Name="lblNome"
+                            IsVisible="false"
+                                
+                            Padding="7,10"
+                            RowSpacing="-3">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <Label
+                                Grid.Row="0"
+                                Text="Nome:"
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                TextColor="#CB6554"
+                                />
+                                                        <Label
+                                Grid.Row="1"
+                                Text="Palha de aço"
+                                FontSize="13"
+                                TextColor="White"
+                                />
+                                                    </Grid>
+
+                                                    <!--DATA DE VALIDADE-->
+                                                    <Grid
+                            x:Name="lblDtValidade"
+                            IsVisible="{Binding produto}"
+                            Padding="7,10"
+                            RowSpacing="-3">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <Label
+                                Grid.Row="0"
+                                Text="Data de validade:"
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                TextColor="#CB6554"
+                                />
+                                                        <Label
+                                Grid.Row="1"
+                                Text="12/12/2012"
+                                FontSize="13"
+                                TextColor="White"
+                                />
+                                                    </Grid>
+
+                                                    <!--TIPO-->
+                                                    <Grid
+                            x:Name="lblTipo"
+                            IsVisible="{Binding produto}"
+                            Padding="7,10"
+                            RowSpacing="-3">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <Label
+                                Grid.Row="0"
+                                Text="Tipo:"
+                                FontAttributes="Bold"
+                                FontSize="14"
+                                TextColor="#CB6554"
+                                />
+                                                        <Label
+                                Grid.Row="1"
+                                Text="Limpeza"
+                                FontSize="13"
+                                TextColor="White"
+                                />
+                                                    </Grid>
+
+                                                    <!--MEDIDA-->
+                                                    <Grid
+                            x:Name="lblMedida"
+                            IsVisible="{Binding mobilia}"
+                            Padding="7,10"
+                            RowSpacing="-3">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <Label
+                                Grid.Row="0"
+                                FontAttributes="Bold"
+                                Text="Medida:"
+                                FontSize="14"
+                                TextColor="#CB6554"
+                                />
+                                                        <Label
+                                Grid.Row="1"
+                                Text="{Binding MedidaM}"
+                                FontSize="13"
+                                TextColor="White"
+                                />
+                                                    </Grid>
+                                                    <Grid
+                                            x:Name="lblMedidaEletro"
+                                            IsVisible="{Binding eletrodomestico}"
+                                            Padding="7,10"
+                                            RowSpacing="-3">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <Label
+                                                Grid.Row="0"
+                                                FontAttributes="Bold"
+                                                Text="Medida:"
+                                                FontSize="14"
+                                                TextColor="#CB6554"
+                                                />
+                                                        <Label
+                                                Grid.Row="1"
+                                                Text="{Binding MedidaE}"
+                                                FontSize="13"
+                                                TextColor="White"
+                                                />
+                                                    </Grid>
+
+                                                    <!--CONDIÇÃO-->
+                                                    <Grid
+                            x:Name="lblCondicaoMobilia"
+                            IsVisible="{Binding mobilia}"
+                            Padding="7,10"
+                            RowSpacing="-3">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <Label
+                                Grid.Row="0"
+                                Text="Condição:"
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                TextColor="#CB6554"
+                                />
+                                                        <Label
+                                Grid.Row="1"
+                                Text="{Binding CondicaoM}"
+                                FontSize="13"
+                                TextColor="White"
+                                />
+                                                    </Grid>
+
+                                                    <Grid
+                                            x:Name="lblCondicaoEletro"
+                                            IsVisible="{Binding eletrodomestico}"
+                                            Padding="7,10"
+                                            RowSpacing="-3">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <Label
+                                                Grid.Row="0"
+                                                Text="Condição:"
+                                                FontSize="14"
+                                                FontAttributes="Bold"
+                                                TextColor="#CB6554"
+                                                />
+                                                        <Label
+                                                Grid.Row="1"
+                                                Text="{Binding CondicaoE}"
+                                                FontSize="13"
+                                                TextColor="White"
+                                                />
+                                                    </Grid>
+
+                                                    <!--TAMANHO-->
+                                                    <Grid
+                            x:Name="lblTamanho"
+                            IsVisible="{Binding roupa}"
+                            Padding="7,10"
+                            RowSpacing="-3">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <Label
+                                Grid.Row="0"
+                                Text="Tamanho:"
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                TextColor="#CB6554"
+                                />
+                                                        <Label
+                                Grid.Row="1"
+                                Text="P"
+                                FontSize="13"
+                                TextColor="White"
+                                />
+                                                    </Grid>
+
+                                                    <!--GÊNERO-->
+                                                    <Grid
+                            x:Name="lblGenero"
+                            IsVisible="{Binding roupa}"
+                            Padding="7,10"
+                            RowSpacing="-3">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <Label
+                                Grid.Row="0"
+                                Text="Gênero:"
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                TextColor="#CB6554"
+                                />
+                                                        <Label
+                                Grid.Row="1"
+                                Text="Feminino"
+                                FontSize="13"
+                                TextColor="White"
+                                />
+                                                    </Grid>
+
+                                                    <!--FAIXA ETÁRIA-->
+                                                    <Grid
+                            x:Name="lblFaixaEtaria"
+                            IsVisible="{Binding roupa}"
+                            Padding="7,10,0,5"
+                            RowSpacing="-3">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <Label
+                                Grid.Row="0"
+                                Text="Faixa etária:"
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                TextColor="#CB6554"
+                                />
+                                                        <Label
+                                Grid.Row="1"
+                                Text="18 anos"
+                                FontSize="13"
+                                TextColor="White"
+                                />
+                                                    </Grid>
+
+                                                    <!--QUANTIDADE-->
+                                                    <Grid
+                            x:Name="lblQuantidade"
+                            IsVisible="{Binding quantidade}"
+                            Padding="7,10"
+                            RowSpacing="-3">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <Label
+                                Grid.Row="0"
+                                Text="Quantidade:"
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                TextColor="#CB6554"
+                                />
+                                                        <Label
+                                Grid.Row="1"
+                                Text="{Binding Quantidade}"
+                                FontSize="13"
+                                TextColor="White"
+                                />
+                                                    </Grid>
+
+                                                    <!--DESCRIÇÃO-->
+                                                    <Grid
+                            x:Name="lblDescricao"
+                            IsVisible="{Binding descricao}"
+                            Padding="7,10"
+                            RowSpacing="-3">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <Label
+                                Grid.Row="0"
+                                Text="Descrição:"
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                TextColor="#CB6554"
+                                />
+                                                        <Grid
+                                Grid.Row="1"
+                                HeightRequest="40">
+                                                            <ScrollView>
+                                                                <Label
+                                    Text="{Binding ItemDoacaoDescricao}"
+                                    FontSize="13"
+                                    TextColor="White"
+                                    />
+                                                            </ScrollView>
+                                                        </Grid>
+                                                    </Grid>
+
+                                                </StackLayout>
+
+                                            </ScrollView>
+                                        </Grid>
+
+                                    </StackLayout>
+                                </Grid>
+
+
+                                <Grid
+                        VerticalOptions="End"
+                        HeightRequest="70"
+                        ColumnSpacing="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <Grid
+                            IsVisible="{Binding pendente}"
+                            Grid.Column="0"
+                            Padding="10,0,0,15"
+                            >
+                                        <HorizontalStackLayout
+                                Spacing="4"
+                                VerticalOptions="End">
+                                            <Image
+                                    Source="iconpendente.svg"
+                                    HeightRequest="15"/>
+
+                                            <Label
+                                    Text="Pendente"
+                                    TextColor="#FFF964"
+                                    />
+                                        </HorizontalStackLayout>
+                                    </Grid>
+
+                                    <Grid
+                            IsVisible="{Binding cancelada}"
+                            Grid.Column="0"
+                            Padding="10,0,0,15"
+                            >
+                                        <HorizontalStackLayout
+                                Spacing="4"
+                                VerticalOptions="End">
+                                            <Image
+                                    Source="iconcancelada.svg"
+                                    HeightRequest="15"/>
+
+                                            <Label
+                                    Text="Cancelada"
+                                    TextColor="#FF6464"
+                                    FontAttributes="Bold"
+                                    />
+                                        </HorizontalStackLayout>
+                                    </Grid>
+
+                                    <Grid
+                            IsVisible="{Binding concluida}"
+                            Grid.Column="0"
+                            Padding="10,0,0,15"
+                            >
+                                        <HorizontalStackLayout
+                                Spacing="4"
+                                VerticalOptions="End">
+                                            <Image
+                                    Source="iconconfirmada.svg"
+                                    HeightRequest="15"/>
+
+                                            <Label
+                                    Text="Concluída"
+                                    FontAttributes="Bold"
+                                    TextColor="#71FF64"
+                                    />
+                                        </HorizontalStackLayout>
+                                    </Grid>
+
+                                    <Grid
+                            Grid.Column="1"
+                            Padding="0,0,10,15"
+                            RowSpacing="10">
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <Grid
+                                            IsVisible="false"
+                                Grid.Row="0">
+
+                                            <Button
+                                    BackgroundColor="#45AA34"/>
+
+                                            <Label
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    TextColor="White"
+                                    Text="Confirmar"/>
+                                        </Grid>
+
+                                        <Grid
+                                            IsVisible="false"
+                                Grid.Row="1">
+
+                                            <Button
+                                    BackgroundColor="#AA3434"/>
+                                            <Label
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    TextColor="White"
+                                    Text="Cancelar"/>
+                                        </Grid>
+
+
+                                    </Grid>
+                                </Grid>
+
+                            </Grid>
+                        </DataTemplate>
+                    </syncfusion:SfListView.ItemTemplate>
+                </syncfusion:SfListView>
+            </Grid>
+
+            <!--DOAÇÕES PENDENTES-->
+
+
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

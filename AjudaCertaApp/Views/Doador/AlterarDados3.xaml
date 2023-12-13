@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             x:Class="AjudaCertaApp.Views.Doador.AlterarDados3"
+             NavigationPage.HasNavigationBar="False"
+             Title="AlterarDados3">
+    <Grid
+        BackgroundColor="#F4DFC9">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="250"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <ImageButton
+            Grid.Column="0"
+            Source="setavoltar.svg"
+            HeightRequest="25"
+            Margin="4,0,0,0"
+            HorizontalOptions="Start"
+            Command="{Binding VoltarCommand}"
+        />
+
+        <BoxView 
+            Color="#F5A24A"
+            Grid.Row="2"
+            Grid.RowSpan="3"
+            BackgroundColor="#F4DFC9"
+            CornerRadius="88,88,0,0"
+            />
+
+        <Grid
+            Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+            <Label
+                Grid.Row="1"
+                FontFamily="Inter"
+	            HorizontalTextAlignment="Center"
+                VerticalOptions="Start"
+	            FontSize="40"
+	            TextColor="#000000"
+                Text="Doador"/>
+
+        </Grid>
+
+        <Grid
+            Grid.Row="3"
+            Padding="40,70,40,20"
+            RowSpacing="5">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid
+                Grid.Row="0"
+                RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label
+                    Text="Senha atual:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+	                TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout
+                    ContainerType="Outlined"
+                    Grid.Row="1"
+                    ContainerBackground="White"
+                    InputViewPadding="20,10"
+                    EnablePasswordVisibilityToggle="True"
+                    OutlineCornerRadius="30">
+                    <Entry
+                    VerticalOptions="Start"
+                    Text="{Binding Senha}"/>
+                </sf:SfTextInputLayout>
+            </Grid>
+
+            <Grid
+                Grid.Row="1"
+                RowSpacing="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label
+                    Text="Nova senha:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+	                TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout
+                    ContainerType="Outlined"
+                    Grid.Row="1"
+                    ContainerBackground="White"
+                    InputViewPadding="20,10"
+                    EnablePasswordVisibilityToggle="True"
+                    OutlineCornerRadius="30">
+                    <Entry
+                    VerticalOptions="Start"
+                    Text="{Binding Senha}"/>
+                </sf:SfTextInputLayout>
+            </Grid>
+
+            <Grid
+                Grid.Row="2"
+                RowSpacing="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label
+                    Text="Confirmar nova senha:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+	                TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout
+                    ContainerType="Outlined"
+                    Grid.Row="1"
+                    ContainerBackground="White"
+                    InputViewPadding="20,10"
+                    EnablePasswordVisibilityToggle="True"
+                    OutlineCornerRadius="30">
+                    <Entry
+                    VerticalOptions="Start"
+                    Text="{Binding ConfirmaSenha}"/>
+
+                </sf:SfTextInputLayout>
+            </Grid>
+
+            <Button
+                Grid.Row="3"
+                Text="Concluir"
+                FontSize="24"
+                BackgroundColor="#DF6234"
+                CornerRadius="20"
+                WidthRequest="200"
+                HeightRequest="65"      
+                Command="{Binding RegistrarPessoaCommand}"
+                />
+
+        </Grid>
+    </Grid>
+</ContentPage>

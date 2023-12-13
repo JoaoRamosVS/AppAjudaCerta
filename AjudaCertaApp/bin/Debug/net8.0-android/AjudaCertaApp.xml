@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AjudaCertaApp</name>
+    </assembly>
+    <members>
+        <member name="M:AjudaCertaApp.Services.Pessoas.Search.ByZipCode(System.String,System.String)">
+            <summary>
+            Search address by Zip Code
+            </summary>
+            <param name="zipCode">Zip code value</param>
+            <param name="type">The type to search address. Use ViaCEPTypes object to help. Possible values include: 'json', 'xml', 'piped' and 'querty'</param>
+            <returns>String with result in type selected</returns>
+            
+        </member>
+        <member name="M:AjudaCertaApp.Services.Pessoas.Search.ByZipCode(System.String)">
+            <summary>
+            Search address by Zip Code
+            </summary>
+            <param name="zipCode">Zip code value</param>
+            <returns>Object with address result</returns>
+        </member>
+    </members>
+</doc>

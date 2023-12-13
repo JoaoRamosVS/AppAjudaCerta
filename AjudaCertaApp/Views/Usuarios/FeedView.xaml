@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:conv="clr-namespace:AjudaCertaApp.Converters"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             x:Class="AjudaCertaApp.Views.FeedView" 
+             NavigationPage.HasNavigationBar="False"
+             >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:ByteArrayToImageSourceConverter x:Key="ByteArrayToImage" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView
+        BackgroundColor="#F4DFC9">
+
+        <ScrollView.GestureRecognizers>
+            <SwipeGestureRecognizer Direction="Down" Swiped="SwipeGestureRecognizer_Swiped" />
+        </ScrollView.GestureRecognizers>
+        
+        <StackLayout>
+            <syncfusion:SfListView
+                x:Name="ListView"
+                ItemsSource="{Binding Posts}"
+                ItemSpacing="5,0,0,0"
+                ItemSize="500"               
+                        >
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Grid
+                            Padding="20">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <BoxView
+                                Color="#F5AF66"
+                                BackgroundColor="Transparent"
+                                CornerRadius="20"
+                                />
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height=".65*"/>
+                                    <RowDefinition Height=".1*"/>
+                                    <RowDefinition Height=".25*"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid
+                                    Padding="0"
+                                    Grid.Row="0">
+                                    
+
+                                    <ImageButton
+                                        Padding="5,0,5,0"
+                                        Source="{Binding Foto, Converter={StaticResource ByteArrayToImage}}"
+                                        CornerRadius="15"
+                                        />
+
+                                </Grid>
+
+                                <Label
+                                    Grid.Row="1"
+                                    Text="@ong_estreladalva: "
+                                    TextColor="white"
+                                    Padding="10,5"
+                                    FontAttributes="Bold"/>
+
+                                <Grid
+                                    Grid.Row="1"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Start"
+                                    Padding="0,0,3,0"
+                                    >
+                                    <ImageButton
+                                        HorizontalOptions="End"
+                                        Source="excluirpost.svg"
+                                        HeightRequest="25"
+                                        />
+                                </Grid>
+
+                                <Grid
+                                    Grid.Row="2"
+                                    Padding="15,0,15,15">
+                                <ScrollView
+                                    VerticalScrollBarVisibility="Never"
+                                    Grid.Row="2"
+                                    >
+                                    <Label
+                                        Text="{Binding Conteudo}"
+                                        TextColor="White"/>
+
+                                </ScrollView>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+                    
+                
+
+            </StackLayout>
+
+
+    
+    </ScrollView>
+</ContentPage>
+

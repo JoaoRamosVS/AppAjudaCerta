@@ -1,0 +1,1119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             x:Class="AjudaCertaApp.Views.Doador.Doacao"
+             NavigationPage.HasNavigationBar="False"
+             >
+
+    <Grid
+        BackgroundColor="#F4DFC9">
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".20*"/>
+            <RowDefinition Height=".20*"/>
+            <RowDefinition Height=".60*"/>
+        </Grid.RowDefinitions>
+
+
+
+        <Label
+            Grid.RowSpan="1"
+            FontFamily="Inter"
+            HorizontalTextAlignment="Center"
+            VerticalOptions="Center"
+            FontSize="40"
+            TextColor="#DF6034"
+            Text="Doação"/>
+
+        <BoxView 
+            Color="#F5A24A"
+            Grid.Row="1"
+            Grid.RowSpan="4"
+            BackgroundColor="#F4DFC9"
+            CornerRadius="88,88,0,0"
+            />
+
+        <Grid
+            Grid.Row="1"
+            Padding="40,70,40,20"
+            RowSpacing="-15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90"/>
+            </Grid.RowDefinitions>
+
+            <Grid
+                Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label
+                    Text="Tipo de doação:"
+                    FontFamily="Inter"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+                    FontSize="14"
+                    Padding="5,0"
+                    TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout 
+                    Grid.Row="1" 
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    ContainerBackground="White"
+                    InputViewPadding="15,0,0,6"
+                    Stroke="#F5A24A"
+                    >
+                    <Picker
+                        Title="---Selecione---"
+                        ItemsSource="{Binding ListaConteudoDoacao}"
+                        ItemDisplayBinding="{Binding Descricao}"
+                        SelectedItem="{Binding ConteudoDoacaoSelecionado}"
+                        SelectedIndexChanged="pckTipoDoacao_SelectedIndexChanged"
+                        x:Name="pckTipoDoacao"/>
+                </sf:SfTextInputLayout>
+            </Grid>
+            
+        </Grid>
+
+        <!--PRODUTO-->
+        <ScrollView
+            Grid.Row="2"
+            x:Name="GridProduto"
+            VerticalOptions="Start"
+            Padding="40,0,40,20"
+            IsVisible="false"
+            >
+            <VerticalStackLayout
+            Spacing="-15"
+            >
+
+                <Grid
+                Grid.Row="1"
+                IsVisible="true"
+                    HeightRequest="90">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label
+                    Text="Nome:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+                    Padding="5,0"
+	                TextColor="#FFFFFF"/>
+
+                    <sf:SfTextInputLayout 
+                    Grid.Row="1" 
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    ContainerBackground="White"
+                    InputViewPadding="15,5,15,5"
+                    Stroke="#F5A24A"
+                    >
+                        <Editor
+                        Text="{Binding Nome}"
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start"                        
+                        />
+                    </sf:SfTextInputLayout>
+                </Grid>
+
+                <Grid
+                Grid.Row="1"
+                IsVisible="true"
+                    HeightRequest="90">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label
+                    Text="Quantidade:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+                    Padding="5,0"
+	                TextColor="#FFFFFF"/>
+
+                    <sf:SfTextInputLayout 
+                    Grid.Row="1" 
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    ContainerBackground="White"
+                    InputViewPadding="15,5,15,5"
+                    Stroke="#F5A24A"
+                    >
+                        <Editor
+                        Text="{Binding Quantidade}"
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start"                        
+                        />
+                    </sf:SfTextInputLayout>
+                </Grid>
+
+                <Grid
+            Grid.Row="2"
+                    HeightRequest="90"
+            IsVisible="true">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label
+                Text="Descrição:"
+                FontFamily="Inter"
+                HorizontalTextAlignment="Start"
+                VerticalTextAlignment="End"
+                FontSize="14"
+                Padding="5,0"
+                TextColor="#FFFFFF"/>
+
+                    <sf:SfTextInputLayout 
+                Grid.Row="1" 
+                ContainerType="Outlined"
+                OutlineCornerRadius="30"
+                ContainerBackground="White"
+                InputViewPadding="15,5,15,5"
+                Stroke="#F5A24A"
+                >
+                        <Editor
+                    AutoSize="TextChanges"
+                    VerticalOptions="Start"
+                            Text="{Binding Descricao}"
+                    />
+                    </sf:SfTextInputLayout>
+                </Grid>
+
+                <Grid
+                    Grid.Row="3"
+                    ColumnSpacing="20"
+                    HeightRequest="90">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        x:Name="lblDataValidade"
+                        IsVisible="true"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Text="Data de validade:"
+                        Padding="5,0"
+                        FontFamily="Inter"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="End"
+                        FontSize="14"
+                        TextColor="#FFFFFF"/>
+
+                    <sf:SfTextInputLayout
+                        x:Name="dtpDataValidade"
+                        IsVisible="true"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        ContainerBackground="White"
+                        ContainerType="Outlined"
+                        OutlineCornerRadius="30"
+                        InputViewPadding="20,0,20,0"
+                        >
+                        <DatePicker
+                    VerticalOptions="Center"
+                Date="{Binding DataValidade}"/>
+                    </sf:SfTextInputLayout>
+
+
+
+                    <Label
+                        x:Name="lblTipoProduto"
+                        IsVisible="true"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Text="Tipo:"
+                        Padding="5,0"
+                        FontFamily="Inter"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="End"
+                        FontSize="14"
+                        TextColor="#FFFFFF"/>
+
+                    <sf:SfTextInputLayout 
+                        Grid.Row="1" 
+                        Grid.Column="1"
+                        ContainerType="Outlined"
+                        OutlineCornerRadius="30"
+                        ContainerBackground="White"
+                        InputViewPadding="20,5,0,5"
+                        Stroke="#F5A24A"
+                        >
+                        <Picker
+                            Title="---Selecione---"
+                            ItemsSource="{Binding ListaTipoProduto}"
+                            ItemDisplayBinding="{Binding Descricao}"
+                            SelectedItem="{Binding TipoProdutoSelecionado}"/>
+                    </sf:SfTextInputLayout>
+
+
+
+                </Grid>
+
+                <Button
+                    Margin="0,50"
+                    Grid.Row="4"
+                    Text="AGENDAR"
+                    FontSize="24"
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"
+                    BackgroundColor="#DF6234"
+                    CornerRadius="20"
+                    WidthRequest="200"
+                    HeightRequest="50"       
+                    Command="{Binding DirecionarAgendamentoCommand}"
+                    />
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!--ELETRODOMÉSTICO-->
+        <ScrollView
+            x:Name="GridEletro"
+            IsVisible="false"
+            Grid.Row="2"
+            Padding="40,0,40,20"
+            >
+            <StackLayout
+                Spacing="-15">
+            <Grid
+                Grid.Row="1"
+                IsVisible="true"
+                HeightRequest="90">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label
+                    Text="Nome:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+                    Padding="5,0"
+	                TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout 
+                    Grid.Row="1" 
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    ContainerBackground="White"
+                    InputViewPadding="15,5,15,5"
+                    Stroke="#F5A24A"
+                    >
+                    <Editor
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start"
+                        Text="{Binding Nome}"
+                        />
+                </sf:SfTextInputLayout>
+            </Grid>
+
+                <Grid
+                Grid.Row="1"
+                IsVisible="true"
+                    HeightRequest="90">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label
+                    Text="Quantidade:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+                    Padding="5,0"
+	                TextColor="#FFFFFF"/>
+
+                    <sf:SfTextInputLayout 
+                    Grid.Row="1" 
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    ContainerBackground="White"
+                    InputViewPadding="15,5,15,5"
+                    Stroke="#F5A24A"
+                    >
+                        <Editor
+                        Text="{Binding Quantidade}"
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start"                        
+                        />
+                    </sf:SfTextInputLayout>
+                </Grid>
+
+                <Grid
+                Grid.Row="2"
+                IsVisible="true"
+                HeightRequest="90">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label
+                    Text="Descrição:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+                    Padding="5,0"
+	                TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout 
+                    Grid.Row="1" 
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    ContainerBackground="White"
+                    InputViewPadding="15,5,15,5"
+                    Stroke="#F5A24A"
+                    >
+                    <Editor
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start"
+                        Text="{Binding Descricao}"
+                        />
+                </sf:SfTextInputLayout>
+            </Grid>
+
+            <Grid
+                Grid.Row="3"
+                ColumnSpacing="20"
+                HeightRequest="90">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    x:Name="lblMedida"
+                    IsVisible="true"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="Medida:"
+                    Padding="5,0"
+                    FontFamily="Inter"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+                    FontSize="14"
+                    TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout
+                    x:Name="dtpMedida"
+                    IsVisible="true"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    ContainerBackground="White"
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    InputViewPadding="20,5,20,5"
+                    
+                    >
+                    <Editor
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start"
+                        Text="{Binding Medida}"/>
+                </sf:SfTextInputLayout>
+
+
+                <Label
+                    x:Name="lblCondiçãoEletro"
+                    IsVisible="true"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Text="Condição:"
+                    Padding="5,0"
+                    FontFamily="Inter"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+                    FontSize="14"
+                    TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout 
+                    Grid.Row="1" 
+                    Grid.Column="1"
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    ContainerBackground="White"
+                    InputViewPadding="20,5,20,5"
+                    Stroke="#F5A24A"
+                    >
+                    <Editor
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start"
+                        Text="{Binding Condicao}"/>
+                </sf:SfTextInputLayout>
+
+            </Grid>
+
+            <Button
+                Grid.Row="4"
+                Margin="0,50"
+                Text="AGENDAR"
+                FontSize="24"
+                BackgroundColor="#DF6234"
+                CornerRadius="20"
+                WidthRequest="200"
+                HeightRequest="50" 
+                VerticalOptions="End"
+                Command="{Binding DirecionarAgendamentoCommand}"
+                />
+            </StackLayout>
+        </ScrollView>
+        
+       <!--ROUPA-->
+        <ScrollView
+            x:Name="GridRoupa"
+            IsVisible="false"
+            Grid.Row="2"
+            Padding="40,0,40,20">
+            <VerticalStackLayout
+                Spacing="-15">
+
+            <Grid
+                Grid.Row="1"
+                IsVisible="true"
+                HeightRequest="90">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label
+                    Text="Nome:"
+                    FontFamily="Inter"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+                    FontSize="14"
+                    Padding="5,0"
+                    TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout 
+                    Grid.Row="1" 
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    ContainerBackground="White"
+                    InputViewPadding="15,5,15,5"
+                    Stroke="#F5A24A"
+                    >
+                    <Editor
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start"
+                        Text="{Binding Nome}"
+                        />
+                </sf:SfTextInputLayout>
+            </Grid>
+
+                <Grid
+                Grid.Row="1"
+                IsVisible="true"
+                    HeightRequest="90">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label
+                    Text="Quantidade:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+                    Padding="5,0"
+	                TextColor="#FFFFFF"/>
+
+                    <sf:SfTextInputLayout 
+                    Grid.Row="1" 
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    ContainerBackground="White"
+                    InputViewPadding="15,5,15,5"
+                    Stroke="#F5A24A"
+                    >
+                        <Editor
+                        Text="{Binding Quantidade}"
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start"                        
+                        />
+                    </sf:SfTextInputLayout>
+                </Grid>
+
+                <Grid
+                Grid.Row="2"
+                IsVisible="true"
+                HeightRequest="90">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label
+                    Text="Descrição:"
+                    FontFamily="Inter"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+                    FontSize="14"
+                    Padding="5,0"
+                    TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout 
+                    Grid.Row="1" 
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    ContainerBackground="White"
+                    InputViewPadding="15,5,15,5"
+                    Stroke="#F5A24A"
+                    >
+                    <Editor
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start"
+                        Text="{Binding Descricao}"
+                        />
+                </sf:SfTextInputLayout>
+            </Grid>
+
+            <Grid
+                Grid.Row="3"
+                ColumnSpacing="20"
+                HeightRequest="90">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    IsVisible="true"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="Tamanho:"
+                    Padding="5,0"
+                    FontFamily="Inter"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+                    FontSize="14"
+                    TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout
+                    IsVisible="true"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    ContainerBackground="White"
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    InputViewPadding="20,5,20,5"
+            
+                    >
+                    <Editor
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start" 
+                        Text="{Binding Tamanho}"/>
+                </sf:SfTextInputLayout>
+
+
+                <Label
+                    IsVisible="true"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Text="Condição:"
+                    Padding="5,0"
+                    FontFamily="Inter"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+                    FontSize="14"
+                    TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout 
+                    Grid.Row="1" 
+                    Grid.Column="1"
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    ContainerBackground="White"
+                    InputViewPadding="20,5,20,5"
+                    Stroke="#F5A24A"
+                    >
+                    <Editor
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start"
+                        Text="{Binding Condicao}"/>
+                </sf:SfTextInputLayout>
+
+            </Grid>
+
+            <Grid
+                Grid.Row="4"
+                ColumnSpacing="20"
+                HeightRequest="90">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    IsVisible="true"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="Gênero:"
+                    Padding="5,0"
+                    FontFamily="Inter"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+                    FontSize="14"
+                    TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout
+                    IsVisible="true"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    ContainerBackground="White"
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    InputViewPadding="20,5,20,5"
+            
+                    >
+                    <Picker
+                        Title="---Selecione---"
+                        ItemsSource="{Binding ListaGenero}"
+                        ItemDisplayBinding="{Binding Descricao}"
+                        SelectedItem="{Binding ListaGeneroSelecionado}"/>
+                </sf:SfTextInputLayout>
+
+                <Label
+                    IsVisible="true"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Text="Faixa etária:"
+                    Padding="5,0"
+                    FontFamily="Inter"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+                    FontSize="14"
+                    TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout 
+                    Grid.Row="1" 
+                    Grid.Column="1"
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    ContainerBackground="White"
+                    InputViewPadding="20,5,20,5"
+                    Stroke="#F5A24A"
+                    >
+                    <Picker
+                        Title="---Selecione---"
+                        ItemsSource="{Binding ListaFxEtaria}"
+                        ItemDisplayBinding="{Binding Descricao}"
+                        SelectedItem="{Binding FxEtariaSelecionado}"/>
+                </sf:SfTextInputLayout>
+
+            </Grid>
+
+            <Button
+                Grid.Row="5"
+                Text="AGENDAR"
+                Margin="0,50"
+                FontSize="24"
+                BackgroundColor="#DF6234"
+                CornerRadius="20"
+                WidthRequest="200"
+                HeightRequest="50" 
+                VerticalOptions="End"
+                Command="{Binding DirecionarAgendamentoCommand}"
+                />
+            </VerticalStackLayout>
+        </ScrollView>
+        
+        <!--MOBÍLIA-->
+        <ScrollView
+            x:Name="GridMobilia"
+            IsVisible="false"
+            Grid.Row="2"
+            Padding="40,0,40,20"
+            >
+            <VerticalStackLayout
+                Spacing="-15">
+
+            <Grid
+                Grid.Row="1"
+                IsVisible="true"
+                HeightRequest="90">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label
+                    Text="Nome:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+                    Padding="5,0"
+	                TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout 
+                    Grid.Row="1" 
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    ContainerBackground="White"
+                    InputViewPadding="15,5,15,5"
+                    Stroke="#F5A24A"
+                    >
+                    <Editor
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start"
+                        Text="{Binding Nome}"
+                        />
+                </sf:SfTextInputLayout>
+            </Grid>
+
+                <Grid
+                Grid.Row="1"
+                IsVisible="true"
+                    HeightRequest="90">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label
+                    Text="Quantidade:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+                    Padding="5,0"
+	                TextColor="#FFFFFF"/>
+
+                    <sf:SfTextInputLayout 
+                    Grid.Row="1" 
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    ContainerBackground="White"
+                    InputViewPadding="15,5,15,5"
+                    Stroke="#F5A24A"
+                    >
+                        <Editor
+                        Text="{Binding Quantidade}"
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start"                        
+                        />
+                    </sf:SfTextInputLayout>
+                </Grid>
+
+                <Grid
+                Grid.Row="2"
+                IsVisible="true"
+                HeightRequest="90">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label
+                    Text="Descrição:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+                    Padding="5,0"
+	                TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout 
+                    Grid.Row="1" 
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    ContainerBackground="White"
+                    InputViewPadding="15,5,15,5"
+                    Stroke="#F5A24A"
+                    >
+                    <Editor
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start"
+                        Text="{Binding Descricao}"
+                        />
+                </sf:SfTextInputLayout>
+            </Grid>
+
+            <Grid
+                Grid.Row="3"
+                ColumnSpacing="20"
+                HeightRequest="90">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    IsVisible="true"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="Medida:"
+                    Padding="5,0"
+                    FontFamily="Inter"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+                    FontSize="14"
+                    TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout
+                    IsVisible="true"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    ContainerBackground="White"
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    InputViewPadding="20,5,20,5"
+                    
+                    >
+                    <Editor
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start"
+                        Text="{Binding Medida}"/>
+                </sf:SfTextInputLayout>
+
+
+                <Label
+                    IsVisible="true"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Text="Condição:"
+                    Padding="5,0"
+                    FontFamily="Inter"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+                    FontSize="14"
+                    TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout 
+                    Grid.Row="1" 
+                    Grid.Column="1"
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    ContainerBackground="White"
+                    InputViewPadding="20,5,20,5"
+                    Stroke="#F5A24A"
+                    >
+                    <Editor
+                        Text="{Binding Condicao}"
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start" />
+                </sf:SfTextInputLayout>
+
+            </Grid>
+
+            <Button
+                Grid.Row="4"
+                Text="AGENDAR"
+                FontSize="24"
+                Margin="0,50"
+                BackgroundColor="#DF6234"
+                CornerRadius="20"
+                WidthRequest="200"
+                HeightRequest="50" 
+                VerticalOptions="End"
+                Command="{Binding DirecionarAgendamentoCommand}"
+                />
+            </VerticalStackLayout>
+        </ScrollView>
+        
+        <!--DINHEIRO-->
+        <ScrollView
+            IsVisible="false"
+            x:Name="GridDinheiro"
+            Grid.Row="2"
+            Padding="40,0,40,20"
+            >
+            <VerticalStackLayout
+                Spacing="-15">
+
+                <Grid
+                Grid.Row="1"
+                IsVisible="true"
+                HeightRequest="90">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label
+                    Text="Valor:"
+                    FontFamily="Inter"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+                    FontSize="14"
+                    Padding="5,0"
+                    TextColor="#FFFFFF"/>
+
+                    <sf:SfTextInputLayout 
+                    Grid.Row="1" 
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    ContainerBackground="White"
+                    InputViewPadding="15,5,15,5"
+                    Stroke="#F5A24A"
+                    >
+                        <Editor
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start"                        
+                        />
+                    </sf:SfTextInputLayout>
+                </Grid>
+
+                <!--PICKER-->
+                <Grid
+                Grid.Row="1"
+                IsVisible="true"
+                HeightRequest="90">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label
+                    Text="Forma de pagamento:"
+                    FontFamily="Inter"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+                    FontSize="14"
+                    Padding="5,0"
+                    TextColor="#FFFFFF"/>
+
+                    <sf:SfTextInputLayout 
+                    Grid.Row="1" 
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    ContainerBackground="White"
+                    InputViewPadding="15,5,15,5"
+                    Stroke="#F5A24A"
+                    >
+                        <Editor
+                        AutoSize="TextChanges"
+                        VerticalOptions="Start"                        
+                        />
+                    </sf:SfTextInputLayout>
+                </Grid>
+
+                <Grid
+                    Padding="0,20">
+                    <Button
+                        Grid.Row="4"
+                        FontSize="24"
+                        BackgroundColor="#DF6234"
+                        CornerRadius="20"
+                        WidthRequest="200"
+                        HeightRequest="50" 
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        />
+
+                    <Label
+                        Text="DOAR"
+                        TextColor="White"
+                        FontSize="Large"
+                        VerticalTextAlignment="Center"
+                        HorizontalOptions="Center"/>
+                </Grid>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!--CESTA BÁSICA-->
+        <ScrollView
+            IsVisible="false"
+            x:Name="GridCestaBasica"
+            Grid.Row="2"
+            Padding="40,0,40,20"
+            >
+            <VerticalStackLayout
+        >
+
+                <Grid
+                    Grid.Row="1"
+                    IsVisible="true"
+                    HeightRequest="90">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label
+                        Text="Quantidade:"
+                        FontFamily="Inter"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="End"
+                        FontSize="14"
+                        Padding="5,0"
+                        TextColor="#FFFFFF"/>
+
+                    <sf:SfTextInputLayout 
+                        Grid.Row="1" 
+                        ContainerType="Outlined"
+                        OutlineCornerRadius="30"
+                        ContainerBackground="White"
+                        InputViewPadding="15,5,15,5"
+                        Stroke="#F5A24A"
+                        >
+                        <Editor
+                            AutoSize="TextChanges"
+                            VerticalOptions="Start"       
+                            Text="{Binding Quantidade}"
+                            />
+                    </sf:SfTextInputLayout>
+                </Grid>
+
+                <Button
+                    Grid.Row="4"
+                    Text="AGENDAR"
+                    FontSize="24"
+                    BackgroundColor="#DF6234"
+                    CornerRadius="20"
+                    WidthRequest="200"
+                    HeightRequest="50" 
+                    VerticalOptions="End"
+                    Command="{Binding DirecionarAgendamentoCommand}"
+                    />
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+    
+</ContentPage>

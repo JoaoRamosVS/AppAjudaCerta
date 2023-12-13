@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="AjudaCertaApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:avatarview="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:local="clr-namespace:AjudaCertaApp"
+    xmlns:views="clr-namespace:AjudaCertaApp.Views"
+    xmlns:conv="clr-namespace:AjudaCertaApp.Converters"
+    xmlns:viewsDoador="clr-namespace:AjudaCertaApp.Views.Doador"
+    xmlns:viewsUsuarios="clr-namespace:AjudaCertaApp.Views.Usuarios"
+    xmlns:viewsBeneficiario="clr-namespace:AjudaCertaApp.Views.Beneficiario"
+    xmlns:viewsOng="clr-namespace:AjudaCertaApp.Views.Ong"
+    Title="AjudaCertaApp"
+    Shell.BackgroundColor="#F5A24A"
+    Shell.TabBarBackgroundColor="#F4DFC9"
+    Shell.TabBarTitleColor="#F5A24A"
+    Shell.TabBarUnselectedColor="#F5A24A"
+    Shell.TabBarForegroundColor="#F5A24A"
+    >
+    <Shell.TitleView>
+        <Image
+            Source="logo_minimalista.svg"
+            HorizontalOptions="End"
+            Margin="0,5,10,5"
+            />
+    </Shell.TitleView>
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <conv:ByteArrayToImageSourceConverter x:Key="ByteArrayToImage" />
+        </ResourceDictionary>
+    </Shell.Resources>
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{OnPlatform Android=130, iOS=200}"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <FlexLayout Grid.Row="0" Direction="Row" AlignItems="Center" >
+
+                    <Grid
+                        Padding="5,0">
+                        <avatarview:SfAvatarView 
+                           ContentType="Custom"
+                           ImageSource="{Binding Foto, Converter={StaticResource ByteArrayToImage}}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"   
+                           HeightRequest="100"
+                           WidthRequest="100"
+                           CornerRadius="50" />
+
+                        <Button
+                            CornerRadius="50"
+                            BackgroundColor="Transparent"
+                            />
+                    </Grid>
+
+                    <VerticalStackLayout Padding="10,0,0,0" Spacing="0">
+
+                        <Label x:Name="lblUsuario" Text="{Binding Username}" FontAttributes="Bold" FontSize="Medium" />
+                        <Label Text="{Binding TipoPessoa}"  FontSize="Small" />
+                    </VerticalStackLayout>
+                </FlexLayout>
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+
+
+    <FlyoutItem Title="MyTabApp" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+            Title="Home"
+                      Icon="footerhome.svg"
+                      FlyoutItemIsVisible="True"
+                      FlyoutIcon="footerhome.svg"
+                      ContentTemplate="{DataTemplate views:FeedView}"/>
+        
+        <ShellContent Title="Doar"
+                      x:Name="BtnDoar"
+                      Icon="footercifrao.svg"
+                      FlyoutIcon="footercifrao.svg"
+                      ContentTemplate="{DataTemplate viewsDoador:Doacao}"/>
+
+        <ShellContent Title="Reservar"
+                      x:Name="BtnReservar"
+                      Icon="iconreservar.svg"
+                      FlyoutIcon="iconreservar.svg"
+                      ContentTemplate="{DataTemplate viewsBeneficiario:ReservarDoacao}"/>
+
+        <ShellContent Title="Postar"
+              x:Name="btnPostar"
+              Icon="iconpost.svg"
+              FlyoutIcon="iconpost.svg"
+              ContentTemplate="{DataTemplate viewsOng:PostView}"/>
+
+        <ShellContent Title="Chat"
+              Icon="footerchat.svg"
+              FlyoutIcon="footerchat.svg"
+              ContentTemplate="{DataTemplate viewsUsuarios:ChatLista}"/>
+
+        <ShellContent Title="Perfil"
+                      x:Name="btnPerfilOng"
+              Icon="footerperfil.svg"
+              FlyoutIcon="footerperfil.svg"
+              ContentTemplate="{DataTemplate viewsOng:PerfilOng}"/>
+        <ShellContent Title="Perfil"
+                      x:Name="btnPerfilDoador"
+                      Icon="footerperfil.svg"
+                      FlyoutIcon="footerperfil.svg"
+                      ContentTemplate="{DataTemplate viewsDoador:PerfilDoador}"/>
+        <ShellContent Title="Perfil"
+                      Icon="footerperfil.svg"
+                      x:Name="btnPerfilBeneficiario"
+                      FlyoutIcon="footerperfil.svg"
+                      ContentTemplate="{DataTemplate viewsBeneficiario:PerfilBeneficiario}"/>
+    </FlyoutItem>
+
+    
+    <Shell.FlyoutFooterTemplate>
+        <DataTemplate>
+            <StackLayout>
+                <Label 
+                    Padding="20"
+                    Text="Sair"
+                    FontSize="Medium"
+                    TextColor="#DF6234"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"/>
+            </StackLayout>
+        </DataTemplate>
+    </Shell.FlyoutFooterTemplate>
+</Shell>

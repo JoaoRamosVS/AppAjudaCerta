@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             x:Class="AjudaCertaApp.Views.BeneficiarioCadastro1"
+             Title="BeneficiarioCadastro1"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid
+        BackgroundColor="#F4DFC9">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <ImageButton
+            Grid.Column="0"
+            Source="setavoltar.svg"
+            HeightRequest="25"
+            Margin="4,0,0,0"
+            HorizontalOptions="Start"
+            Command="{Binding VoltarCommand}"
+        />
+
+        <Image 
+            Grid.Row="1"
+            Source="iconbeneficiario.svg"
+            VerticalOptions="End"
+            BackgroundColor="#F4DFC9"
+            HeightRequest="80"/>
+
+        <Label
+            Grid.Row="2"
+            FontFamily="Inter"
+	        HorizontalTextAlignment="Center"
+            VerticalOptions="Start"
+	        FontSize="40"
+	        TextColor="#000000"
+            Text="Beneficiário"/>
+
+        <BoxView 
+            Color="#F5A24A"
+            Grid.Row="3"
+            BackgroundColor="#F4DFC9"
+            CornerRadius="88,88,0,0"
+            />
+
+        <Grid
+            Grid.Row="3"
+            Padding="40,50,40,20"
+            >
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="80"/>
+            </Grid.RowDefinitions>
+
+            <Grid
+                Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label
+                    x:Name="lblNome"
+                    Grid.Row="0"
+                    Text="Nome completo:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+	                TextColor="#FFFFFF"
+                    />
+
+                <sf:SfTextInputLayout
+                    Grid.Row="1"
+                    ContainerBackground="White"
+                    ContainerType="Outlined"
+                    HeightRequest="40"
+                    OutlineCornerRadius="30"
+                    InputViewPadding="20,0,20,0"
+                    ReserveSpaceForAssistiveLabels="False">
+                                    <Entry
+                    VerticalOptions="Center"
+                    Text="{Binding Nome}"/>
+                </sf:SfTextInputLayout>
+
+            </Grid>
+
+            <Grid
+                Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Text="Usuário:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+	                TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout
+                    Grid.Row="1"
+                    ContainerBackground="White"
+                    ContainerType="Outlined"
+                    HeightRequest="40"
+                    OutlineCornerRadius="30"
+                    InputViewPadding="20,0,20,0"
+                    ReserveSpaceForAssistiveLabels="False">
+                    <Entry
+                        VerticalOptions="Center"
+                        Text="{Binding Username}"/>
+                </sf:SfTextInputLayout>
+
+            </Grid>
+
+            <Grid
+                Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Text="E-mail:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+	                TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout
+                    Grid.Row="1"
+                    ContainerBackground="White"
+                    ContainerType="Outlined"
+                    HeightRequest="40"
+                    OutlineCornerRadius="30"
+                    InputViewPadding="20,0,20,0"
+                    ReserveSpaceForAssistiveLabels="False">
+                    <Entry
+                    VerticalOptions="Center"
+                    Text="{Binding Email}"/>
+                </sf:SfTextInputLayout>
+
+            </Grid>
+
+            
+
+            <Grid
+                Grid.Row="3"
+                ColumnSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+
+                <Label
+                    x:Name="lblDataNasc"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="Data de nascimento:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+	                TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout
+                    x:Name="dtpDataNasc"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    ContainerBackground="White"
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    InputViewPadding="20,0,20,0"
+                    ReserveSpaceForAssistiveLabels="False"
+                    >
+                <DatePicker
+                    Date="{Binding Datanasc}"/>
+                </sf:SfTextInputLayout>
+            
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Text="CPF:"
+                    FontFamily="Inter"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+                    FontSize="14"
+                    TextColor="#FFFFFF"
+                    x:Name="lblCnpj"/>
+
+                <sf:SfTextInputLayout
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    OutlineCornerRadius="30"
+                    ContainerType="Outlined"
+                    ContainerBackground="White"
+                    HeightRequest="40"
+                    InputViewPadding="20,0,20,0"
+                    ReserveSpaceForAssistiveLabels="False"
+                    >
+                    <Entry
+                    Text="{Binding Cpf}"
+                    VerticalOptions="Center"
+                    />
+                </sf:SfTextInputLayout>
+            </Grid>
+
+            <Grid
+                Grid.Row="4"
+                ColumnSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition>
+                    </ColumnDefinition>
+                    <ColumnDefinition>
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Text="Gênero:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+	                TextColor="#FFFFFF"
+                    x:Name="lblGenero"/>
+
+                <sf:SfTextInputLayout
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    ContainerType="Outlined"
+                    OutlineCornerRadius="30"
+                    InputViewPadding="20,0,20,0"
+                    ContainerBackground="White"
+                    ReserveSpaceForAssistiveLabels="False"
+                    x:Name="pckGenero">
+                    <Picker
+                        Title="---Selecione---" 
+                        ItemsSource="{Binding ListaGenero}" 
+                        ItemDisplayBinding="{Binding Descricao}" 
+                        SelectedItem="{Binding ListaGeneroSelecionado}"
+                        />
+                </sf:SfTextInputLayout>
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Text="Telefone:"
+                    FontFamily="Inter"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+                    FontSize="14"
+                    TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        ContainerBackground="White"
+                        ContainerType="Outlined"
+                        HeightRequest="40"
+                        OutlineCornerRadius="30"
+                        InputViewPadding="20,0,20,0"
+                        ReserveSpaceForAssistiveLabels="False">
+                    <Entry
+                        VerticalOptions="Center"
+                        Text="{Binding Telefone}"/>
+                </sf:SfTextInputLayout>
+
+            </Grid>
+
+            <Grid
+                Grid.Row="6"
+                VerticalOptions="End">
+                <Button
+                FontSize="24"
+                VerticalOptions="Center"
+                BackgroundColor="#DF6234"
+                CornerRadius="20"
+                WidthRequest="200"
+                HeightRequest="60"
+                Command="{Binding DirecionarCadastroBeneficiario2Command}"
+                />
+
+                <Image
+                 Source="setabotao.svg"
+                 VerticalOptions="Center"
+                 HorizontalOptions="Center"/>
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</ContentPage>

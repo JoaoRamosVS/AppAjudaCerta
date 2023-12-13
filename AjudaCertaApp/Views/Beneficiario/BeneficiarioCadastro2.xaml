@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+             x:Class="AjudaCertaApp.Views.BeneficiarioCadastro2"
+             Title="BeneficiarioCadastro2"
+             NavigationPage.HasNavigationBar="False"
+             >
+
+
+    <Grid
+        BackgroundColor="#F4DFC9">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <ImageButton
+            Grid.Column="0"
+            Source="setavoltar.svg"
+            HeightRequest="25"
+            Margin="4,0,0,0"
+            HorizontalOptions="Start"
+            Command="{Binding VoltarCommand}"
+        />
+
+        <Image 
+            Grid.Row="1"
+            Source="iconbeneficiario.svg"
+            VerticalOptions="End"
+            BackgroundColor="#F4DFC9"
+            HeightRequest="80"/>
+
+        <Label
+            Grid.Row="2"
+            FontFamily="Inter"
+	        HorizontalTextAlignment="Center"
+            VerticalOptions="Start"
+	        FontSize="40"
+	        TextColor="#000000"
+            Text="Beneficiário"/>
+
+        <BoxView 
+            Color="#F5A24A"
+            Grid.Row="3"
+            BackgroundColor="#F4DFC9"
+            CornerRadius="88,88,0,0"
+            />
+
+        <Grid
+            Grid.Row="3"
+            Padding="40,60,40,20"
+            >
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+
+            <Grid
+                Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="CEP:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+	                TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    ContainerType="Outlined"
+                    InputViewPadding="20,10"
+                    ReserveSpaceForAssistiveLabels="False"
+                    OutlineCornerRadius="30"
+                    ContainerBackground="White"
+                    >
+                    <syncfusion:SfMaskedEntry
+                        VerticalOptions="Center"
+                        Padding="0,10"
+                        MaskType="Simple"
+                        TextColor="Black"
+                        ValueMaskFormat="ExcludePromptAndLiterals"
+                        Value="{Binding Ceep}"
+                        ClearButtonVisibility="WhileEditing"
+                        Mask="00000-000"/>
+                </sf:SfTextInputLayout>
+
+                <Button
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    FontSize="15"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    Text="Consultar"
+                    BackgroundColor="#DF6234"
+                    CornerRadius="10"
+                    WidthRequest="120"
+                    Command="{Binding PreencherEnderecoCommand}"
+                    HeightRequest="40"/>
+
+            </Grid>
+
+            <Grid
+                Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Text="Endereço:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+	                TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout
+                Grid.Row="1"
+                ContainerBackground="White"
+                ContainerType="Outlined"
+                HeightRequest="40"
+                OutlineCornerRadius="30"
+                InputViewPadding="20,0,20,0"
+                ReserveSpaceForAssistiveLabels="False">
+                    <Entry
+                    IsEnabled="False"
+                    VerticalOptions="Center"
+                    Text="{Binding Rua}"/>
+                </sf:SfTextInputLayout>
+
+            </Grid>
+
+            <Grid
+                Grid.Row="2"
+                ColumnSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="Número:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+	                TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout
+                    Grid.Row="1"
+                    ContainerBackground="White"
+                    ContainerType="Outlined"
+                    HeightRequest="40"
+                    Grid.Column="0"
+                    OutlineCornerRadius="30"
+                    InputViewPadding="20,0,20,0"
+                    ReserveSpaceForAssistiveLabels="False">
+                    <Entry
+                        Text="{Binding Numero}"
+                        VerticalOptions="Center"
+                        IsEnabled="True"
+                    />
+                </sf:SfTextInputLayout>
+
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Text="Complemento:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+	                TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout
+                    Grid.Row="1"
+                    ContainerBackground="White"
+                    ContainerType="Outlined"
+                    HeightRequest="40"
+                    Grid.Column="1"
+                    OutlineCornerRadius="30"
+                    InputViewPadding="20,0,20,0"
+                    ReserveSpaceForAssistiveLabels="False">
+                    <Entry
+                        VerticalOptions="Center"
+                        Text="{Binding Complemento}"
+                        IsEnabled="True"
+                    />
+                </sf:SfTextInputLayout>
+
+            </Grid>
+
+            <Grid
+                Grid.Row="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Text="Bairro:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+	                TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout
+                    Grid.Row="1"
+                    ContainerBackground="White"
+                    ContainerType="Outlined"
+                    HeightRequest="40"
+                    Grid.Column="0"
+                    OutlineCornerRadius="30"
+                    InputViewPadding="20,0,20,0"
+                    ReserveSpaceForAssistiveLabels="False">
+                    <Entry
+                        VerticalOptions="Center"
+                        Text="{Binding Bairro}"
+                        IsEnabled="False"/>
+                </sf:SfTextInputLayout>
+
+            </Grid>
+
+            <Grid
+                Grid.Row="4"
+                ColumnSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="Estado:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+	                TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout
+                    Grid.Row="1"
+                    ContainerBackground="White"
+                    ContainerType="Outlined"
+                    HeightRequest="40"
+                    Grid.Column="0"
+                    OutlineCornerRadius="30"
+                    InputViewPadding="20,0,20,0"
+                    ReserveSpaceForAssistiveLabels="False">
+                    <Entry
+                    Text="{Binding Estado}"
+                    VerticalOptions="Center"
+                    IsEnabled="False"
+                    />
+                </sf:SfTextInputLayout>
+
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Text="Cidade:"
+                    FontFamily="Inter"
+	                HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="End"
+	                FontSize="14"
+	                TextColor="#FFFFFF"/>
+
+                <sf:SfTextInputLayout
+                    Grid.Row="1"
+                    ContainerBackground="White"
+                    ContainerType="Outlined"
+                    HeightRequest="40"
+                    Grid.Column="1"
+                    OutlineCornerRadius="30"
+                    InputViewPadding="20,0,20,0"
+                    ReserveSpaceForAssistiveLabels="False">
+                    <Entry
+                    Text="{Binding Cidade}"
+                    VerticalOptions="Center"
+                    IsEnabled="False"
+                    />
+                </sf:SfTextInputLayout>
+
+            </Grid>
+
+            <Grid
+                Grid.Row="5">
+
+                <Button
+                FontSize="24"
+                VerticalOptions="Center"
+                BackgroundColor="#DF6234"
+                CornerRadius="20"
+                WidthRequest="200"
+                HeightRequest="60"
+                Command="{Binding DirecionarCadastroBeneficiario3Command}"
+                />
+
+                <Image
+                 Source="setabotao.svg"
+                 VerticalOptions="Center"
+                 HorizontalOptions="Center"/>
+
+            </Grid>
+
+
+        </Grid>
+
+    </Grid>
+</ContentPage>
